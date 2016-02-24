@@ -8,9 +8,6 @@ from lasagne.updates import adam
 from nolearn.lasagne import BatchIterator
 import pickle
 import lasagne
-
-directory = 'F:\Dropbox\strong analytics\Movie Posters'
-os.chdir(os.path.join(directory,"models"))
 import PosterExtras as phf
     
 img_width = 299 
@@ -26,7 +23,7 @@ print('Loaded Data')
 
 # Model Specifications
 net = phf.build_GoogLeNet(img_width, img_height)
-values = pickle.load(open('F:\Dropbox\strong analytics\Movie Posters\models\\blvc_googlenet.pkl', 'rb'))['param values'][:-2]
+values = pickle.load(open('\models\\blvc_googlenet.pkl', 'rb'))['param values'][:-2]
 lasagne.layers.set_all_param_values(net['pool5/7x7_s1'], values)
 
 # Shift image array to BGR for pretrained caffe models
